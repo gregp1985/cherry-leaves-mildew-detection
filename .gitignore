@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+
+inputs/
+outputs/
+
+.env
+.DS_Store
+
+.ipynb_checkpoints/
+kaggle.json
