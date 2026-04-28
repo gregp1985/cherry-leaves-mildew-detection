@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 
 inputs/
-outputs/
+outputs/datasets/
 
 .env
 .DS_Store
