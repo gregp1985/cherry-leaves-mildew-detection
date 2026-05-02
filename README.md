@@ -1,5 +1,20 @@
 # Mildew Detection in Cherry Leaves
 
+This project was developed to address a real-world problem faced by Farmy & Foods, where cherry crops are affected by powdery mildew, a fungal disease that impacts product quality.
+
+Traditionally, detecting this disease requires manual inspection of leaves, which is time-consuming and not scalable across large plantations. To improve efficiency, this project applies machine learning to automate the detection process using leaf images.
+
+The project includes:
+- A visual analysis to differentiate healthy leaves from those affected by powdery mildew
+- A Convolutional Neural Network (CNN) model that predicts leaf health status
+- An interactive dashboard built with Streamlit for real-time image prediction
+
+👉 **Live Application:** https://cherryleaves-mildew-detector-f0f94503373d.herokuapp.com/
+
+👉 **GitHub Repository:** https://github.com/gregp1985/mildew-detection-in-cherry-leaves
+
+The model achieved 99% accuracy on unseen test data, exceeding the project requirement of 97%.
+
 ## Dataset Content
 
 The dataset contains images of cherry leaves provided by Farmy & Foods.
