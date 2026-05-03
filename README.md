@@ -15,6 +15,35 @@ The project includes:
 
 The model achieved 99% accuracy on unseen test data, exceeding the project requirement of 97%.
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Dataset Content](#dataset-content)
+- [Business Requirements](#business-requirements)
+- [Mapping Business Requirements to Data Visualisation and ML Tasks](#mapping-business-requirements-to-data-visualisation-and-ml-tasks)
+- [ML Business Case](#ml-business-case)
+- [Hypothesis and Validation](#hypothesis-and-validation)
+- [Dashboard Design](#dashboard-design)
+- [CRISP-DM Process](#crisp-dm-process)
+- [Epics and User Stories](#epics-and-user-stories)
+- [Technologies Used](#technologies-used)
+- [Deployment](#deployment)
+- [Testing](#testing)
+- [Credits](#credits)
+
+## Project Overview
+
+Powdery mildew is a fungal disease that affects cherry crops and can significantly reduce product quality. Current detection methods rely on manual inspection, which is time-consuming and difficult to scale across large plantations.
+
+This project aims to automate the detection process using machine learning, enabling rapid and accurate identification of infected leaves.
+
+The solution combines:
+- Visual data analysis to understand key differences between leaf types
+- A Convolutional Neural Network (CNN) for classification
+- A Streamlit dashboard for real-time prediction and user interaction
+
+By automating this process, the system helps reduce inspection time and supports better decision-making in agricultural production.
+
 ## Dataset Content
 
 The dataset contains images of cherry leaves provided by Farmy & Foods.
@@ -74,17 +103,36 @@ The model achieved 99% accuracy on the test dataset, exceeding the business requ
 
 ## Hypothesis and Validation
 
-### Hypothesis
+### Hypothesis 1: Visual Differences Exist
 
-Cherry leaves affected by powdery mildew have visible patterns that can be distinguished from healthy leaves through image analysis, and these patterns can be learned by a neural network classifier.
+Cherry leaves affected by powdery mildew have visible differences in colour and texture compared to healthy leaves.
 
-### Validation
+**Validation:**
+- Average images showed lighter, patchy regions in infected leaves
+- Variability images highlighted irregular patterns
+- Image montage confirmed visible fungal markings
 
-The visual analysis demonstrated clear differences in colour, texture, and visible fungal patches between healthy and infected leaves.
+---
 
-The trained CNN model achieved 99% accuracy on unseen test data, confirming that the patterns can be successfully learned.
+### Hypothesis 2: A CNN Model Can Learn These Patterns
 
-Therefore, the hypothesis was validated.
+A Convolutional Neural Network can learn the visual differences between healthy and infected leaves.
+
+**Validation:**
+- The model achieved 99% accuracy on unseen test data
+- The confusion matrix showed strong classification performance
+- Loss and accuracy curves confirmed effective learning without overfitting
+
+---
+
+### Hypothesis 3: The Model Can Be Applied in a Real-World Tool
+
+The trained model can be integrated into an interactive dashboard to support real-time decision-making.
+
+**Validation:**
+- The Streamlit dashboard allows users to upload images
+- Predictions are returned instantly with probability scores
+- The deployed Heroku application functions correctly with real test images
 
 ## Dashboard Design
 
@@ -234,14 +282,50 @@ The model was deployed using a Streamlit dashboard to allow user interaction and
 
 ## Epics and User Stories
 
-### Epic: Data Analysis
-- As a client, I want to understand visual differences between healthy and infected leaves so that I can identify mildew patterns.
+### Epic 1: Project Understanding and Context
 
-### Epic: Machine Learning
-- As a client, I want a system that predicts leaf health so that I can reduce manual inspection time.
+| User Story ID | User Story |
+|---|---|
+| US01 | As a client, I want to understand the project background so that I know why mildew detection is needed. |
+| US02 | As a client, I want to view the business requirements so that I understand the project goals. |
 
-### Epic: Dashboard
-- As a client, I want a dashboard interface so that I can interact with the system easily.
+---
+
+### Epic 2: Visual Analysis of Leaf Data
+
+| User Story ID | User Story |
+|---|---|
+| US03 | As a client, I want to see average images for healthy and mildew leaves so that I can compare their general appearance. |
+| US04 | As a client, I want to see variability images so that I can understand where visual differences occur. |
+| US05 | As a client, I want to see image montages so that I can view real examples from each class. |
+
+---
+
+### Epic 3: Machine Learning Prediction System
+
+| User Story ID | User Story |
+|---|---|
+| US06 | As a client, I want to upload one or more cherry leaf images so that I can receive predictions. |
+| US07 | As a client, I want each prediction to include a probability score so that I can understand model confidence. |
+| US08 | As a client, I want prediction results in a table so that I can review multiple uploaded images together. |
+| US09 | As a client, I want to download prediction results as a CSV file so that I can keep a record. |
+
+---
+
+### Epic 4: Model Validation and Insights
+
+| User Story ID | User Story |
+|---|---|
+| US10 | As a client, I want to understand the project hypotheses so that I can see how the approach was validated. |
+| US11 | As a client, I want to view model performance so that I can confirm the model meets the 97% target. |
+
+---
+
+### Epic 5: User Experience and Navigation
+
+| User Story ID | User Story |
+|---|---|
+| US12 | As a user, I want clear navigation so that I can move between dashboard pages easily. |
 
 ## Technologies Used
 
@@ -308,6 +392,25 @@ This image shows the results of the 4 uploaded images (identifying both healthy 
 
 ![Multiple Images Results](assets/images/mildew_detector_testing_2.png)
 
+## User Story Testing
+
+The following table outlines how each user story was tested to ensure the application meets the project requirements.
+
+| User Story ID | Test | Expected Result | Actual Result | Pass/Fail |
+|---|---|---|---|---|
+| US01 | Open the Project Summary page | Project background is displayed clearly | Project background displayed | Pass |
+| US02 | View the Business Requirements section on Project Summary | Both business requirements are listed | Both requirements displayed | Pass |
+| US03 | Open Leaf Visualiser and expand Average Images | Average healthy and mildew images display | Images displayed correctly | Pass |
+| US04 | Expand Variability Images section | Variability images display with explanation | Images and text displayed correctly | Pass |
+| US05 | Expand Image Montage section | Healthy and mildew montage images display | Montage images displayed correctly | Pass |
+| US06 | Upload multiple test images on Mildew Detector page | App accepts multiple images | Multiple images uploaded successfully | Pass |
+| US07 | Review prediction output | Each image has a predicted label and probability | Predictions and probabilities displayed | Pass |
+| US08 | Review results table after upload | Table contains image name, prediction and probability | Results table displayed correctly | Pass |
+| US09 | Click CSV download button | Prediction results download as CSV | CSV downloaded successfully | Pass |
+| US10 | Open Project Hypothesis page | Three hypotheses and validations are displayed | All hypotheses displayed in expanders | Pass |
+| US11 | Open ML Performance page | Model accuracy, loss and confusion matrix are available | Performance plots displayed correctly | Pass |
+| US12 | Use sidebar navigation | User can move between all pages | All pages accessible from sidebar | Pass |
+
 ### Responsiveness Testing
 
 - Dashboard tested on different screen sizes
@@ -318,7 +421,19 @@ This image shows the results of the 4 uploaded images (identifying both healthy 
 - TensorFlow environment issues resolved by recreating virtual environment
 - Path issues resolved by correcting directory structure
 
+### Code Validation (PEP8)
+
+The project code was tested using a PEP8 linter to ensure adherence to Python coding standards.
+
+- All Python files were checked using a PEP8 compliance tool.
+- Minor formatting issues (such as line length and spacing) were identified and corrected.
+- The final codebase conforms to PEP8 standards with no major errors.
+
+This ensures the code is clean, readable, and maintainable.
+The code was validated using the PEP8 linter integrated in Visual Studio Code.
+
 ## Credits
 
 - Dataset provided by Code Institute and Farmy & Foods
 - Project guidance from course materials
+- Code Institute Mentor: Mo Shami
