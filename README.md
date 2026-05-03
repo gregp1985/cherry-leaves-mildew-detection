@@ -13,6 +13,8 @@ The project includes:
 
 👉 **GitHub Repository:** https://github.com/gregp1985/mildew-detection-in-cherry-leaves
 
+👉 **Kaggle Cherry Leaves Dataset:** https://www.kaggle.com/datasets/codeinstitute/cherry-leaves
+
 The model achieved 99% accuracy on unseen test data, exceeding the project requirement of 97%.
 
 ## Table of Contents
@@ -29,6 +31,7 @@ The model achieved 99% accuracy on unseen test data, exceeding the project requi
 - [Technologies Used](#technologies-used)
 - [Deployment](#deployment)
 - [Testing](#testing)
+- [Ethical Considerations](#ethical-considerations)
 - [Credits](#credits)
 
 ## Project Overview
@@ -501,6 +504,10 @@ The project code was tested using a PEP8 linter to ensure adherence to Python co
 
 This ensures the code is clean, readable, and maintainable.
 The code was validated using the PEP8 linter integrated in Visual Studio Code.
+
+## Ethical Considerations
+
+The dataset was provided under a non-disclosure agreement (NDA). Therefore, raw data is not included in this repository, and only derived outputs (such as plots and trained models) are shared.
 
 ## Credits
 
