@@ -58,6 +58,14 @@ The dataset is used to:
 - Perform a visual study to differentiate healthy and infected leaves
 - Train a machine learning model to classify leaf health status
 
+### Dataset Split Distribution
+
+The dataset was split into training, validation, and test sets.
+
+The distribution shows that both healthy and powdery mildew images are present in each dataset split, ensuring balanced training and reliable evaluation of the model.
+
+![Dataset Split](assets/images/dataset_split_distribution.png)
+
 ## Business Requirements
 
 The client is interested in:
@@ -79,6 +87,14 @@ The client requires a dashboard that presents both the visual study and the pred
   - Compare differences between average images
   - Create image montages
 
+- Specific Actions:
+  - Load and preprocess image data
+  - Compute mean and standard deviation images
+  - Visualise differences using matplotlib
+  - Display results in the dashboard with explanations
+
+---
+
 ### Business Requirement 2: Prediction System
 
 - User Story: As a client, I want to upload leaf images and receive predictions so that I can quickly identify infected leaves.
@@ -86,18 +102,43 @@ The client requires a dashboard that presents both the visual study and the pred
 - ML Tasks:
   - Train a Convolutional Neural Network (CNN)
   - Evaluate model performance using accuracy, confusion matrix, and classification report
-  - Deploy model in a Streamlit dashboard for real-time predictions
+  - Deploy model in a Streamlit dashboard
+
+- Rationale:
+  Machine learning is required to automate the classification of cherry leaf images, as manual inspection is not scalable. A Convolutional Neural Network (CNN) is appropriate due to its effectiveness in image classification tasks.
+
+- Specific Actions:
+  - Split dataset into train/validation/test sets
+  - Apply image augmentation
+  - Define CNN architecture
+  - Train and validate the model
+  - Save trained model
+  - Integrate model into Streamlit app for predictions
 
 ## ML Business Case
 
-The aim of this predictive analytics task is to build a supervised binary classification model that predicts whether a cherry leaf is healthy or affected by powdery mildew.
+The aim of this predictive analytics task is to build a supervised machine learning model that classifies cherry leaf images as either healthy or affected by powdery mildew.
 
-- Learning Method: Supervised learning using a Convolutional Neural Network (CNN)
-- Ideal Outcome: A model capable of accurately classifying leaf images
-- Success Metric: Minimum 97% prediction accuracy
-- Model Output: Binary classification (Healthy / Powdery Mildew) with probability score
-- Heuristics: Image resizing to 100x100 pixels to reduce model size and training time
-- Training Data: Labelled dataset of cherry leaf images provided by the client
+- Learning Method:
+  Supervised learning using a Convolutional Neural Network (CNN), which is well suited for image classification tasks.
+
+- Ideal Outcome:
+  A model that can accurately distinguish between healthy and infected leaves.
+
+- Success Metrics:
+  The model must achieve at least 97% accuracy, as agreed with the client.
+
+- Model Output:
+  A binary classification (Healthy / Powdery Mildew) along with a probability score indicating confidence.
+
+- Relevance to the User:
+  The model allows users to quickly assess leaf health by uploading images, significantly reducing the need for manual inspection and improving efficiency in agricultural operations.
+
+- Heuristics:
+  Images were resized to 100x100 pixels to reduce computational cost and model size while maintaining sufficient detail for classification.
+
+- Training Data:
+  The model was trained using a labelled dataset of cherry leaf images provided by the client.
 
 The model achieved 99% accuracy on the test dataset, exceeding the business requirement.
 
@@ -136,6 +177,10 @@ The trained model can be integrated into an interactive dashboard to support rea
 
 ## Dashboard Design
 
+The dashboard includes auxiliary functionality to handle and render predictions, allowing users to upload images and receive real-time classification results with probability scores.
+
+Model evaluation is also presented through accuracy and loss plots and a confusion matrix, enabling users to assess the performance of the machine learning model.
+
 ### Page 1: Project Summary
 
 ![Project Summary Page](assets/images/project_summary.png)
@@ -146,6 +191,8 @@ The trained model can be integrated into an interactive dashboard to support rea
   - Business requirements
 - Purpose:
   - Provide context for the problem and dataset
+- Widgets/Visuals:
+  - Text sections
 - Business Requirement:
   - Supports understanding of both requirements
 
@@ -163,6 +210,10 @@ The trained model can be integrated into an interactive dashboard to support rea
   - Interpretations for each visual
 - Purpose:
   - Demonstrate visual differences between leaf classes
+- Widgets/Visuals:
+  - Expanders
+  - Image plots
+  - Text explanations
 - Business Requirement:
   - Addresses Business Requirement 1
 
@@ -208,6 +259,11 @@ The montages show sample images from each class. Mildew leaves display visible w
   - CSV download button
 - Purpose:
   - Provide real-time prediction capability
+- Widgets/Visuals:
+  - File uploader
+  - Uploaded image previews
+  - Dataframe
+  - Download button
 - Business Requirement:
   - Addresses Business Requirement 2
 
@@ -223,6 +279,12 @@ The montages show sample images from each class. Mildew leaves display visible w
   - Validation using model performance
 - Purpose:
   - Demonstrate reasoning and validation of the approach
+- Widgets/Visuals:
+  - Expanders
+  - Success messages
+  - Text explanations
+- Business Requirement:
+  - Supports both business requirements by showing how the visual and ML approaches were validated.
 
 ---
 
@@ -237,6 +299,10 @@ The montages show sample images from each class. Mildew leaves display visible w
   - Final evaluation statement
 - Purpose:
   - Show model performance and confirm it meets business requirements
+- Widgets/Visuals:
+  - Expanders
+  - Evaluation plots
+  - Success message
 - Business Requirement:
   - Addresses Business Requirement 2
 
@@ -263,7 +329,9 @@ The confusion matrix shows how many test images were correctly or incorrectly cl
 ## CRISP-DM Process
 
 ### Business Understanding
-The goal was to reduce manual inspection time by developing a system to identify powdery mildew in cherry leaves.
+This phase involved understanding the client’s need to reduce manual inspection time and improve detection accuracy of powdery mildew in cherry leaves.
+
+The dataset was analysed to confirm it contained labelled images suitable for both visual analysis and supervised machine learning.
 
 ### Data Understanding
 The dataset consisted of labelled images of cherry leaves categorised into healthy and powdery mildew classes.
@@ -355,6 +423,8 @@ Required files:
 - setup.sh
 
 The application can be accessed via the deployed URL.
+
+The Heroku deployment was tested after release. The application loaded successfully, all dashboard pages were accessible, visual assets displayed correctly, and the Mildew Detector returned predictions for uploaded test images.
 
 ## Testing
 

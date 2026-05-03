@@ -70,5 +70,6 @@ def page_leaf_visualiser_body():
     st.write(
         "The visual analysis confirms that healthy and powdery mildew leaves can be distinguished "
         "based on colour, texture, and visible fungal patterns. "
-        "This supports the business requirement for visual differentiation."
+        "This supports the business requirement for visual differentiation"
+        "between healthy and infected cherry leaves."
     )

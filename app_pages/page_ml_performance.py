@@ -13,7 +13,12 @@ def page_ml_performance_body():
     st.write("The Business Requirement was **97% prediction accuracy**.")
 
     st.header("Model Result")
-    st.success("The model achieved **99% test accuracy**, exceeding the Business Requirement.")
+    st.success(
+    "The model achieved 99% accuracy on the test dataset, exceeding the required "
+    "97% performance threshold. This confirms that the model successfully meets "
+    "the business requirement and can reliably classify cherry leaves as healthy "
+    "or affected by powdery mildew."
+    )
 
     st.info("Expand each section below to explore the analysis.")
 
@@ -21,7 +26,8 @@ def page_ml_performance_body():
         st.header("Accuracy Curve")
         st.image("outputs/plots/accuracy_plot.png")
         st.write(
-            "The accuracy curve shows how the model improved during training and validation."
+            "The accuracy curve shows the model improving over time on both training and validation data, "
+            "indicating successful learning and good generalisation."
         )
 
     with st.expander("Show Loss Curve"):
